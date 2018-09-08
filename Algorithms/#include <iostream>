@@ -1,0 +1,156 @@
+#include <iostream>
+using namespace std;
+
+struct Node
+{
+	int val;
+	Node *l;
+	Node *r;
+
+	Node(int v) // it is a constructor for making objects of type Node;
+	{
+      val=v;
+      l=NULL;
+      r=NULL;
+	}
+};
+
+Node *head =NULL;
+Node *tail = NULL;
+int cnt=0;
+
+void push_back(int n)
+{
+	Node *x = new Node(n);	
+	cnt++;
+	if (tail == NULL)
+	{
+		head = x;
+		tail = x;
+		cout<<"ok"<<endl;
+	}			
+	else
+	{
+		x->l = tail;
+		tail->r = x;
+		tail = x;
+		cout<<"ok"<<endl;
+	}	
+	
+}
+void push_front(int n)
+{
+	Node *x = new Node(n);
+	cnt++;
+	if (head == NULL)
+	{
+		
+		head = x;
+		tail = x;
+		cout<<"ok"<<endl;
+	}			
+	else
+	{
+		x->r = head;
+		head->l = x;
+		head = x;
+		cout<<"ok"<<endl;
+	}	
+}
+
+int pop_front()
+{
+	
+		Node *x = head->r;
+		int data = head->val;
+		if (x != NULL)
+			x->l = NULL;
+		head = x;
+		cnt--;
+		return data;
+		
+	
+}
+int pop_back()
+{
+	
+		Node *y=tail->l;
+		int dataa=tail->val;
+		if (y != NULL)
+			y->r=NULL;
+		tail=y;
+		
+		cnt--;
+		return dataa;
+	
+
+}
+int front()
+{
+	return head->val;
+}
+int size()
+{
+	return cnt;
+}
+
+void clear()
+{
+	cnt=0;
+	tail=NULL;
+	head=NULL;
+	cout<<"ok"<<endl;
+}
+int back()
+{
+	return tail->val;
+}
+
+int main()
+{
+	string s;
+	while (!(s=="exit"))
+	{
+		cin>>s;
+		if(s=="push_front")
+		{
+			int x;
+			cin>>x;
+			push_front(x);
+		}
+		if(s=="push_back")
+		{
+			int y;
+			cin>>y;
+			push_front(y);
+		}
+		if(s=="pop_back")
+		{
+			pop_back();
+		}
+		if(s=="pop_front")
+		{
+			pop_front();
+		}
+		if(s=="back")
+		{
+			cout<<back()<<endl;
+		}
+		if(s=="front")
+		{
+			cout<<front()<<endl;
+		}
+		if(s=="size")
+		{
+			cout<<size()<<endl;
+		}
+		if(s=="clear")
+		{
+			clear();
+		}
+	}
+	cout<<"bye"<<endl;
+
+
+	return 0;
+}

@@ -1,0 +1,9 @@
+1. Minimum number of edges is: (n-k). Cause if we have at least two components where only three vertices exist; there is only one edge that could construct two components.
+2. There are 16 simple paths from vertex 1 to 2 with five vertices. 
+  A simple representation of it could be seen below: 
+  1 2 
+  1 # 2
+  1 # # 2
+  1 # # # 2 
+3. Connected graph is always connected no matter which edge to delete, so the answer equals to 0.
+    
